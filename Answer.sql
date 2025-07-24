@@ -9,7 +9,7 @@ SELECT * FROM Employee WHERE JoinDate='2023-01-01';
 SELECT * FROM Employee WHERE Salary>60000;
 
 -- 4. Show employees who do not have any department assigned.
-SELECT * FROM Employee WHERE DepartmentID=null;
+SELECT * FROM Employee WHERE DepartmentID IS NULL;
 
 -- 5. Find employees who report to ManagerID 101.
 SELECT * FROM Employee WHERE ManagerID=101;
