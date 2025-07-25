@@ -89,3 +89,62 @@ SELECT EmployeeID FROM employee WHERE ManagerID IN (101,102,103);
 -- 30. Display employees who joined in months with join date in ('2023-03-21', '2023-04-18').
 SELECT EmployeeID FROM employee WHERE JoinDate BETWEEN  '2023-03-21' AND '2023-04-18';
 
+-- 31. Show employees with salary between 50000 and 60000.
+SELECT * FROM employee WHERE salary BETWEEN 50000 AND 60000;
+
+-- 32. List employees who joined between '2023-01-01' and '2023-12-31'.
+SELECT * FROM employee WHERE JoinDate BETWEEN '2023-01-01' AND '2023-12-31';
+
+-- 33. Display departments with DepartmentID between 2 and 4.
+SELECT DepartmentName,DepartmentID FROM Department WHERE DepartmentID BETWEEN 2 AND 4;				-- ask sir
+
+-- 34. Show employees whose EmployeeID is between 110 and 120.
+SELECT Name FROM employee WHERE EmployeeID BETWEEN 110 and 120;
+
+-- 35. Find employees whose salary + 1000 lies between 60000 and 70000.
+SELECT Name,(salary+1000) from employee where salary between 60000 and 70000;
+
+-- 36. Find employees whose name starts with 'A'.
+SELECT * FROM employee WHERE name LIKE "A%";
+
+-- 37. Show employees whose name ends with 'a'.
+SELECT * FROM employee WHERE name LIKE "%A";
+
+-- 38. List employees whose name contains 'an'.
+SELECT * FROM employee WHERE name LIKE "%an%";
+
+-- 39. Find employees whose name has second character as 'h'.
+SELECT * FROM employee WHERE name LIKE "_a%";
+
+-- 40. Display employees whose name starts with any 4-letter word followed by 'a'.
+SELECT * FROM employee WHERE name LIKE "____a%";
+
+-- 41. Show all employees ordered by salary in ascending order.
+SELECT * FROM employee ORDER BY SALARY ASC;
+
+-- 42. List employees ordered by JoinDate descending.
+SELECT * FROM employee ORDER BY JoinDate desc;
+
+-- 43. Show departments ordered by DepartmentName alphabetically.
+SELECT * FROM department ORDER BY departmentName ASC;
+
+-- 44. Display employees ordered by department and salary.
+SELECT * FROM Employee ORDER BY DepartmentID asc, salary ASC;
+
+-- 45. List employees ordered by salary descending and then by name ascending.
+SELECT * FROM Employee ORDER BY Salary DESC, Name ASC;
+
+-- 46. Find employees from department 3 with salary > average salary of all employees.
+SELECT * FROM Employee WHERE DepartmentID = 3 AND Salary > (SELECT AVG(Salary) FROM Employee);
+
+-- 47. List names of employees with salary > 50000 and name contains 'a'
+SELECT Name,salary FROM Employee WHERE name like"%a%" AND Salary > 50000;
+
+-- 48. Show count of employees for each department using GROUP BY.
+select DepartmentID,count(EmployeeID) from employee GROUP BY DepartmentID;
+
+-- 49. Find top 5 highest paid employees using ORDER BY and LIMIT.
+SELECT * FROM employee ORDER BY salary DESC limit 5;
+
+-- 50. List employees who joined in 2023, belong to department 4 or 5, and earn less than 50000.
+SELECT * FROM Employee WHERE YEAR(JoinDate) = 2023 AND DepartmentID IN (4, 5)AND Salary < 50000;
